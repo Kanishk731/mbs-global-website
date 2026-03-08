@@ -15,10 +15,10 @@ const stats = [
   { number: "", description: "" },
 ];
 
-const About = () => {
+const AboutCompany = () => {
   return (
     <section
-      id="about"
+      id="about-company"
       className="relative bg-white py-32 px-6 overflow-hidden min-h-screen"
     >
       {/* Smudge SVG at relative px distance */}
@@ -52,4 +52,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutCompany;

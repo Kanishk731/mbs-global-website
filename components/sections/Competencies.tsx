@@ -28,7 +28,7 @@ const Competencies = () => {
             <span className="font-zalando font-medium">
               Platform & Product Engineering
             </span>
-            <div className="font-work-sans font-normal text-[#FFFFFF] text-xl pt-3">
+            <div className="font-sans font-normal text-[#FFFFFF] text-xl pt-3">
               Modern architecture for scalable global products.
             </div>
           </div>
@@ -36,7 +36,7 @@ const Competencies = () => {
             <span className="font-zalando font-medium">
               Digital Infra & Ops
             </span>
-            <div className="font-work-sans font-normal text-[#FFFFFF] text-xl pt-3">
+            <div className="font-sans font-normal text-[#FFFFFF] text-xl pt-3">
               Robust infrastructure management for 24/7 availability.
             </div>
           </div>
@@ -44,7 +44,7 @@ const Competencies = () => {
             <span className="font-zalando font-medium">
               Data, Analytics & AI
             </span>
-            <div className="font-work-sans font-normal text-[#FFFFFF] text-xl pt-3">
+            <div className="font-sans font-normal text-[#FFFFFF] text-xl pt-3">
               Actionable intelligence to power your digital evolution.
             </div>
           </div>

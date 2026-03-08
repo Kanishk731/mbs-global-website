@@ -19,7 +19,7 @@ const Hero = () => {
           One Team.
         </h1>
 
-        <p className="px-18 mb-10 font-work-sans font-normal text-center text-xl text-[#FFFFFF] dark:text-[#FFFFFF]">
+        <p className="px-18 mb-10 font-sans font-normal text-center text-xl text-[#FFFFFF] dark:text-[#FFFFFF]">
           We don&apos;t just deliver services; we Co-Engineer your future.
           Experience a people-driven partnership that turns global goals into
           operational reality.
