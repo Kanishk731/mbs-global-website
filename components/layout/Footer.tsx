@@ -97,37 +97,37 @@ const Footer = () => {
             </h3>
             <div className="flex flex-col gap-3 text-sm text-zinc-600 dark:text-zinc-400">
               <Link
-                href="/solutions"
+                href="/solutions/workspace-solution"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Workspace solution
               </Link>
               <Link
-                href="/solutions"
+                href="/solutions/total-talent-solutions"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Total talent solutions
               </Link>
               <Link
-                href="/solutions"
+                href="/solutions/operative-managements"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Operative managements
               </Link>
               <Link
-                href="/solutions"
+                href="/solutions/strategic-consulting"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Strategic consulting
               </Link>
               <Link
-                href="/solutions"
+                href="/solutions/innovation"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Innovation
               </Link>
               <Link
-                href="/solutions"
+                href="/solutions/business-information"
                 className="hover:text-black dark:hover:text-white transition-colors"
               >
                 Business information

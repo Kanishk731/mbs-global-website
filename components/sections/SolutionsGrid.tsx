@@ -53,7 +53,7 @@ const SOLUTIONS_DATA = [
 
 const SolutionsGrid = () => {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-[#1F1F1F] py-24">
       <div className="container mx-auto px-6 max-w-7xl">
         <span className="flex items-center justify-center font-zalando font-normal text-[#D699FF] text-5xl mb-12">
           The Three Pillars of MBS Workspaces
