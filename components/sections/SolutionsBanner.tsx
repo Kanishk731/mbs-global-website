@@ -2,13 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { getStrapiMedia } from "@/lib/strapi";
 
+import { StrapiBanner } from "@/lib/strapi-types";
+
 interface SolutionsBannerProps {
-  data?: {
-    title: string;
-    subtitle: string;
-    image: any;
-    button?: { id: number; text: string };
-  };
+  data: StrapiBanner;
 }
 
 const SolutionsBanner = ({ data }: SolutionsBannerProps) => {

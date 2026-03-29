@@ -132,7 +132,7 @@ const ServiceSemicircleLoader = ({
                     src={image}
                     alt="Result center"
                     fill
-                    className="object-contain"
+                    className="object-contain brightness-0 dark:brightness-100 dark:bg-black"
                   />
                 </div>
               ) : (
