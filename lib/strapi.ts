@@ -1,7 +1,8 @@
 import populationMap from "./population-map.json";
 
-const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+const STRAPI_URL = process.env.NEXT_PROD_STRAPI_URL || "http://localhost:1337";
+
+const requestCache = new Map<string, Promise<any>>();
 
 export async function fetchStrapi<T>(
   path: string,
@@ -12,11 +13,26 @@ export async function fetchStrapi<T>(
   const apiName = pathSegments[0];
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
+  const isPlural = apiName.endsWith("s");
+
+  const apiToModelMap: Record<string, string> = {
+    categories: "category",
+  };
+
+  const modelName = isPlural
+    ? apiToModelMap[apiName] || apiName.slice(0, -1)
+    : apiName;
+
   try {
     let finalParams = { ...urlParamsObject };
 
-    if (apiName && !finalParams.populate && (populationMap as any)[apiName]) {
-      finalParams.populate = (populationMap as any)[apiName];
+    // Use the mapped modelName for the population-map lookup
+    if (
+      modelName &&
+      !finalParams.populate &&
+      (populationMap as any)[modelName]
+    ) {
+      finalParams.populate = (populationMap as any)[modelName];
     }
 
     const buildQueryString = (params: any, prefix = ""): string => {
@@ -55,28 +71,59 @@ export async function fetchStrapi<T>(
         : "";
 
     const requestUrl = `${STRAPI_URL}/api${normalizedPath}${queryString}`;
+    const controller = new AbortController();
+    const TIMEOUT = Number(process.env.NEXT_PUBLIC_FETCH_TIMEOUT) || 8000;
 
-    const response = await fetch(requestUrl, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options?.headers,
-      },
-    });
-
-    if (!response.ok) {
-      let errorDetail = "";
-      try {
-        const errorData = await response.json();
-        errorDetail = JSON.stringify(errorData);
-      } catch (e) {
-        errorDetail = response.statusText;
-      }
-      throw new Error(`Strapi fetch error: ${response.status} ${errorDetail}`);
+    const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
+    // 🔥 DEDUPE LOGIC
+    if (requestCache.has(requestUrl)) {
+      return requestCache.get(requestUrl);
     }
 
-    const data = await response.json();
-    return data;
+    const fetchPromise = (async () => {
+      try {
+        const response = await fetch(requestUrl, {
+          ...options,
+          signal: controller.signal,
+          next: {
+            revalidate: 3600,
+            tags: [`strapi-${modelName}`],
+          },
+          headers: {
+            "Content-Type": "application/json",
+            ...options?.headers,
+          },
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          let errorDetail = "";
+          try {
+            const errorData = await response.json();
+            errorDetail = JSON.stringify(errorData);
+          } catch {
+            errorDetail = response.statusText;
+          }
+          throw new Error(
+            `Strapi fetch error: ${response.status} ${errorDetail}`,
+          );
+        }
+
+        return response.json();
+      } catch (err) {
+        clearTimeout(timeoutId); // 🔥 important
+        throw err;
+      }
+    })();
+
+    fetchPromise.finally(() => {
+      requestCache.delete(requestUrl);
+    });
+
+    requestCache.set(requestUrl, fetchPromise);
+
+    return fetchPromise;
   } catch (error: any) {
     console.error("Strapi fetch error details:", error.message || error);
     throw new Error(

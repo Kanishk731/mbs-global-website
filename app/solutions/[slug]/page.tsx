@@ -40,12 +40,8 @@ export default async function SolutionDetail({
   let strapiData: any = null;
 
   if (endpoint) {
-    try {
-      const response = await fetchStrapi<{ data: any }>(endpoint);
-      strapiData = response.data;
-    } catch (error) {
-      console.error(`Error fetching solution data for ${slug}:`, error);
-    }
+    const response = await fetchStrapi<{ data: any }>(endpoint);
+    strapiData = response.data;
   }
 
   if (!strapiData) {

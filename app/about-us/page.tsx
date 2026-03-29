@@ -4,11 +4,8 @@ import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 import { StrapiAboutUs } from "@/lib/strapi-types";
 
 const AboutUs = async () => {
-  let aboutData: StrapiAboutUs | null = null;
-  try {
-    const response = await fetchStrapi<StrapiAboutUs>("about-us");
-    aboutData = (response as any).data;
-  } catch (error) {}
+  const response = await fetchStrapi<StrapiAboutUs>("about-us");
+  const aboutData: StrapiAboutUs | null = (response as any).data;
 
   const timelineEvents =
     aboutData?.A_Legacy_of_Transformation?.yearAndtext || [];

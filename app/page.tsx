@@ -10,14 +10,8 @@ import { fetchStrapi } from "@/lib/strapi";
 import { StrapiHome } from "@/lib/strapi-types";
 
 export default async function Home() {
-  let homeData: StrapiHome | null = null;
-
-  try {
-    const response = await fetchStrapi<{ data: StrapiHome }>("/home");
-    homeData = response.data;
-  } catch (error) {
-    console.error("Error fetching Home data:", error);
-  }
+  const response = await fetchStrapi<{ data: StrapiHome }>("/home");
+  const homeData = response.data;
 
   return (
     <main className="flex min-h-screen flex-col">

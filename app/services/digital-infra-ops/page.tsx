@@ -7,15 +7,8 @@ import SolutionsBanner from "@/components/sections/SolutionsBanner";
 import { fetchStrapi, getStrapiMedia } from "@/lib/strapi";
 
 export default async function DigitalInfraOpsPage() {
-  let strapiData: any = null;
-  try {
-    const response = await fetchStrapi<{ data: any }>("/digital-infra-op");
-    strapiData = response.data;
-  } catch (error) {
-    console.error("Error fetching digital infra data:", error);
-  }
-
-  if (!strapiData) return null;
+  const response = await fetchStrapi<{ data: any }>("/digital-infra-op");
+  const strapiData = response.data;
 
   const hero = strapiData.hero_section || strapiData.hero;
   const result = strapiData.Result_section;
