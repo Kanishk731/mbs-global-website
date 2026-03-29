@@ -12,7 +12,7 @@ const navLinks = [
     name: "Solutions",
     href: "#",
     subLinks: [
-      { name: "Workspace Solution", href: "/solutions/workspace-solution" },
+      { name: "GCC Strategy & Enablement", href: "/solutions/workspace-solution" },
       {
         name: "Total Talent Solutions",
         href: "/solutions/total-talent-solutions",

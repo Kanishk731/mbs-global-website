@@ -35,6 +35,7 @@ export interface StrapiAboutUs {
   };
   short_about: Array<{ id: number; title: string; sub_title: string }>;
   empowering_text: Array<{ id: number; title: string; sub_title: string }>;
+  progress?: StrapiProgress;
   banner?: StrapiBanner;
 }
 

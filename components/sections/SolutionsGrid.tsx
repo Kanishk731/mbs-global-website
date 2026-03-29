@@ -102,14 +102,11 @@ const SolutionsGrid = ({
                 <div className="order-3 space-y-8 md:pt-4">
                   {itemPoints.map((point: any, pIdx: number) => (
                     <div key={pIdx} className="flex gap-4">
-                      <span className="text-2xl font-bold text-purple-400 shrink-0">
-                        {pIdx + 1}.
-                      </span>
                       <div className="space-y-1">
                         <h4 className="font-zalando text-xl font-semibold text-zinc-900 dark:text-white tracking-tight">
                           {point.title}
                         </h4>
-                        <p className="font-sans text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        <p className="font-zalando text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
                           {point.description}
                         </p>
                       </div>

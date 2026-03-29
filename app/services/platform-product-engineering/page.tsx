@@ -33,7 +33,7 @@ export default async function PlatformProductEngineeringPage() {
         <ServiceSemicircleLoader
           title={result.title}
           description={result.sub_title}
-          image={getStrapiMedia(result.swipe_element)}
+          image={getStrapiMedia(result.background_image)}
         />
       )}
 
@@ -45,8 +45,8 @@ export default async function PlatformProductEngineeringPage() {
         <ServiceMetrics
           metrics={metricsData.map((m: any) => ({
             score: m.number,
-            description:
-              (m.text ? `${m.text} ` : "") + (m.description || m.title || ""),
+            text: m.text || "",
+            description: m.description || m.title || "",
           }))}
         />
       )}

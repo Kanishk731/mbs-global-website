@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 interface Metric {
   score: string;
+  text: string;
   description: string;
 }
 
@@ -60,8 +61,11 @@ const ServiceMetrics = ({ metrics }: ServiceMetricsProps) => {
                   className="object-contain"
                 />
 
-                <span className="text-3xl md:text-4xl lg:text-5xl font-light tracking-wide text-zinc-900 dark:text-white relative z-10 flex flex-col items-center text-center px-6 leading-tight max-w-full break-words">
+                <span className="text-3xl md:text-4xl lg:text-5xl font-light tracking-wide text-zinc-900 dark:text-white relative z-10 flex flex-col items-center text-center px-6 leading-tight max-w-full wrap-break-word">
                   {metric.score}
+                  <span className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 font-sans max-w-[220px] mx-auto leading-relaxed">
+                    {metric.text}
+                  </span>
                 </span>
               </div>
 

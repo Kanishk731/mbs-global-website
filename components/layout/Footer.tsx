@@ -78,7 +78,7 @@ const Footer = () => {
                 href="/solutions/workspace-solution"
                 className="hover:text-white transition-colors"
               >
-                Workspace Solutions
+                GCC Strategy & Enablement
               </Link>
               <Link
                 href="/solutions/total-talent-solutions"
@@ -205,7 +205,7 @@ const Footer = () => {
                 href="/solutions/workspace-solution"
                 className="hover:text-white transition-colors"
               >
-                Workspace Solutions
+                GCC Strategy & Enablement
               </Link>
               <Link
                 href="/solutions/total-talent-solutions"
