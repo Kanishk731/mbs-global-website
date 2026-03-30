@@ -263,8 +263,8 @@ const GetInTouch = () => {
                 <p className="font-semibold mb-1">
                   The head office of Mbs Global
                 </p>
-                <p>128 CITY ROAD LONDON ECIV 2NX</p>
-                <p>UNITED KINGDOM</p>
+                <p>AltF Spaces, Second Floor, Plot No. 21 & 22A, Sector 142, Noida Expressway, UP 201305</p>
+                <p>INDIA</p>
               </div>
             </div>
           </div>
