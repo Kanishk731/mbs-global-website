@@ -261,9 +261,9 @@ const GetInTouch = () => {
               />
               <div className="text-center font-sans font-normal text-[14px] leading-relaxed tracking-wide text-zinc-900 dark:text-white">
                 <p className="font-semibold mb-1">
-                  The head office of Mbs Global
+                  Head Office
                 </p>
-                <p>AltF Spaces, Second Floor, Plot No. 21 & 22A, Sector 142, Noida Expressway, UP 201305</p>
+                <p>A-1202, The Capital, Science City Road, Sola, Ahmedabad, Gujarat, 380060</p>
                 <p>INDIA</p>
               </div>
             </div>
