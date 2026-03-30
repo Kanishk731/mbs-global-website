@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 import { getStrapiMedia } from "@/lib/strapi";
 
 interface ContactData {
@@ -30,8 +31,7 @@ const Contact = ({ data }: ContactProps) => {
   return (
     <section
       id="contact"
-      className="relative flex flex-col h-[500px] md:min-h-screen shrink-0 items-center justify-center overflow-hidden px-6 py-24"
-    >
+      className="relative flex flex-col h-[500px] md:min-h-screen shrink-0 items-center justify-center overflow-hidden px-6 py-24">
       <div className="absolute inset-0 z-0 bg-black">
         <Image
           src={backgroundImage}
@@ -46,11 +46,8 @@ const Contact = ({ data }: ContactProps) => {
         <div className="text-4xl md:text-6xl font-normal font-zalando mb-8 text-white">
           {title}
         </div>
-        <Link
-          href="/contact"
-          className="relative z-10 max-w-fit mx-auto border hover:border-white hover:bg-white text-white hover:text-black rounded-sm py-3 px-6 text-center block"
-        >
-          <span className="font-zalando font-normal text-sm sm:text-base md:text-lg">
+        <Link href="/contact" className="relative z-10 max-w-fit mx-auto border border-white rounded-sm py-3 px-6 text-center block">
+          <span className="font-zalando font-normal text-white">
             {buttonText}
           </span>
         </Link>
