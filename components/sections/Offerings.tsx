@@ -90,10 +90,10 @@ const Offerings = ({ data }: OfferingsProps) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
                   <div className="flex flex-col flex-1 space-y-4">
-                    <h3 className="font-zalando text-2xl md:text-3xl font-normal text-white md:text-zinc-900 md:dark:text-white leading-tight">
+                    <h3 className="font-zalando text-2xl md:text-3xl font-normal text-zinc-900 dark:text-white leading-tight">
                       {item.title}
                     </h3>
-                    <p className="font-sans text-base md:text-lg text-[#E0E0E0] md:text-zinc-600 md:dark:text-zinc-400 leading-relaxed">
+                    <p className="font-sans text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
                       {item.subtitle}
                     </p>
                   </div>
