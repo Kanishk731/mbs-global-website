@@ -16,7 +16,6 @@ export async function fetchStrapi<T>(
   const apiName = pathSegments[0];
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
-
   const apiToModelMap: Record<string, string> = {
     categories: "category",
     about_us: "about_us",

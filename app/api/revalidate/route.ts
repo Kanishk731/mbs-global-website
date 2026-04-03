@@ -10,19 +10,26 @@ export async function POST(req: NextRequest) {
     }
     const body = await req.json();
 
-    let model = body.model || body.uid || "unknown";
+    let model =
+      body.model ||
+      body.uid ||
+      body?.entry?.model ||
+      body?.data?.model ||
+      "unknown";
 
     // Normalize: api::blog.blog -> blog, or plugin::upload.file -> file
-    if (model.includes("::")) {
-      model = model.split("::")[1].split(".")[0];
-    } else if (model.includes(".")) {
-      model = model.split(".")[0];
+    if (typeof model === "string") {
+      if (model.includes("::")) {
+        model = model.split("::")[1].split(".")[0];
+      } else if (model.includes(".")) {
+        model = model.split(".")[0];
+      }
+    } else {
+      model = "unknown";
     }
 
-    // 🔥 match your fetch tags
     const tag = `strapi-${model}`;
-
-    revalidateTag(tag, "max");
+    await revalidateTag(tag, "max");
 
     return NextResponse.json({ revalidated: true, tag });
   } catch (err) {
